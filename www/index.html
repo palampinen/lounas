@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title></title>
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="lib/ionic-contrib-tinder-cards/ionic.tdcards.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+
+    <script src="//code.ionicframework.com/collide/0.0.4/collide.js"></script>
+    <script src="lib/lodash/lodash.min.js"></script>
+    <script src="lib/ionic-contrib-tinder-cards/ionic.tdcards.js"></script>
+    
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/services/food.js"></script>
+    <script src="js/controllers/food.controller.js"></script>
+
+
+
+  </head>
+  <body ng-app="lunchr" no-scroll>
+
+    <ion-pane ng-controller="FoodCtrl">
+
+       <td-cards class="foods">
+        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
+          <div class="content" ng-controller="CardCtrl">
+            <div class="no-text">No thanks</div>
+            <div ng-bind-html="card"></div>
+            <div class="yes-text">Yes please</div>
+          </div>
+        </td-card>
+      </td-cards>
+
+
+
+    </ion-pane>
+  </body>
+</html>
